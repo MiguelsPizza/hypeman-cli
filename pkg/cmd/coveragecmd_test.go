@@ -85,7 +85,7 @@ func TestParseInstanceLogsSource(t *testing.T) {
 	t.Run("accepts mixed-case source names", func(t *testing.T) {
 		source, err := parseInstanceLogsSource("SwTpM")
 		require.NoError(t, err)
-		assert.Equal(t, hypeman.InstanceLogsParamsSourceSwtpm, source)
+		assert.Equal(t, instanceLogsSourceSwtpm, source)
 	})
 
 	t.Run("rejects unsupported source names", func(t *testing.T) {

@@ -10,6 +10,10 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
+// instanceLogsSourceSwtpm is the "swtpm" value accepted by the API's log source
+// enum. The generated SDK does not define a constant for it yet.
+const instanceLogsSourceSwtpm hypeman.InstanceLogsParamsSource = "swtpm"
+
 var logsCmd = cli.Command{
 	Name:      "logs",
 	Usage:     "Fetch the logs of an instance",
@@ -93,7 +97,7 @@ func parseInstanceLogsSource(raw string) (hypeman.InstanceLogsParamsSource, erro
 	case "hypeman":
 		return hypeman.InstanceLogsParamsSourceHypeman, nil
 	case "swtpm":
-		return hypeman.InstanceLogsParamsSourceSwtpm, nil
+		return instanceLogsSourceSwtpm, nil
 	default:
 		return "", fmt.Errorf("invalid source: %s (must be app, vmm, hypeman, or swtpm)", raw)
 	}
